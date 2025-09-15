@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* CSS Reset and Global Styles */
         :root {
@@ -59,13 +59,14 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            z-index: 1001; /* Agar logo tetap di atas saat menu mobile aktif */
+            z-index: 1001;
+            /* Agar logo tetap di atas saat menu mobile aktif */
         }
 
         .logo span {
             color: var(--accent-color);
         }
-        
+
         nav {
             display: flex;
             align-items: center;
@@ -119,7 +120,8 @@
         }
 
         .menu-toggle {
-            display: none; /* Sembunyikan di desktop */
+            display: none;
+            /* Sembunyikan di desktop */
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
@@ -138,16 +140,18 @@
         .menu-toggle.active .bar:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
+
         .menu-toggle.active .bar:nth-child(2) {
             opacity: 0;
         }
+
         .menu-toggle.active .bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
         }
 
 
         /* Hero Section */
-       .hero {
+        .hero {
             position: relative;
             width: 100%;
             height: 100vh;
@@ -184,7 +188,7 @@
             left: 5%;
             color: white;
             max-width: 600px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .hero-caption h1 {
@@ -209,7 +213,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
         }
 
@@ -230,7 +234,8 @@
         }
 
         /* Kelas untuk memicu animasi */
-        .product-section.visible, footer.visible {
+        .product-section.visible,
+        footer.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -272,35 +277,35 @@
         }
 
         .card-image {
-    width: 100%;
-    height: 240px;
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    overflow: hidden; /* Penting untuk memotong gambar */
-    position: relative;
-}
+            width: 100%;
+            height: 240px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
 
-/* Membuat lapisan gambar menggunakan pseudo-element ::before */
-.card-image::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('https://via.placeholder.com/180x240/555/FFFFFF?text=Image');
-    background-size: cover;
-    background-position: center;
-    
-    /* Kondisi Awal: Gambar sedikit diperbesar */
-    transform: scale(1.15);
-    /* Transisi untuk animasi yang halus */
-    transition: transform 0.4s ease-out;
-}
+            /* Supaya gambar database seragam */
+            background-size: cover;
+            /* isi penuh area */
+            background-position: center;
+            /* fokus tengah */
+            background-repeat: no-repeat;
+            /* jangan nge-loop */
+            transition: transform 0.4s ease-out;
+            /* untuk efek hover */
+        }
 
-/* Gaya ini akan aktif HANYA JIKA class .card-hovered ditambahkan oleh JS */
-.card.card-hovered .card-image::before {
-    /* Gambar kembali ke ukuran normal (efek zoom out) */
-    transform: scale(1);
-}
+        .card:hover .card-image {
+            transform: scale(1.05);
+            /* efek zoom halus */
+        }
+
+
+        /* Saat kartu di-hover, gambar kembali ke ukuran normal (efek zoom out) */
+        .card:hover .card-image::before {
+            transform: scale(1);
+        }
 
         .card-title {
             font-weight: 500;
@@ -309,7 +314,8 @@
 
         .scroll-arrow {
             position: absolute;
-            top: 50%;
+            top: 40%;
+            /* Menyesuaikan posisi vertikal agar lebih pas dengan gambar */
             transform: translateY(-50%);
             background-color: rgba(138, 43, 226, 0.7);
             color: white;
@@ -322,7 +328,15 @@
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 10;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.3s;
+            opacity: 1;
+            /* Awalnya terlihat */
+        }
+
+        .scroll-arrow.hidden {
+            opacity: 0;
+            /* Sembunyikan panah jika class 'hidden' ada */
+            pointer-events: none;
         }
 
         .scroll-arrow:hover {
@@ -371,12 +385,13 @@
         }
 
         /* =========================================== */
-        /* RESPONSIVE DESIGN (MOBILE)        */
+        /* RESPONSIVE DESIGN (MOBILE)                  */
         /* =========================================== */
         @media (max-width: 992px) {
             .search-bar input {
                 width: 150px;
             }
+
             nav ul {
                 gap: 1rem;
             }
@@ -385,7 +400,8 @@
 
         @media (max-width: 768px) {
             .menu-toggle {
-                display: flex; /* Tampilkan tombol menu */
+                display: flex;
+                /* Tampilkan tombol menu */
             }
 
             .header-right {
@@ -393,7 +409,8 @@
             }
 
             .search-bar {
-                display: none; /* Sembunyikan search bar di mobile untuk simpel */
+                display: none;
+                /* Sembunyikan search bar di mobile untuk simpel */
             }
 
             nav ul {
@@ -414,7 +431,7 @@
             nav.active ul {
                 transform: translateX(0);
             }
-            
+
             .hero-caption h1 {
                 font-size: 1.5rem;
             }
@@ -422,12 +439,12 @@
             .hero-caption p {
                 font-size: 1rem;
             }
-            
+
             .scroll-arrow {
-                display: none; /* Sembunyikan panah di mobile, scroll manual lebih natural */
+                display: none;
+                /* Sembunyikan panah di mobile, scroll manual lebih natural */
             }
         }
-
     </style>
 
 </head>
@@ -444,7 +461,7 @@
                     <li><a href="#" class="active">HOME</a></li>
                     <li><a href="#">SYARAT&KETENTUAN</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">ADMIN</a></li>
+                    <li><a href="<?= site_url('admin/login') ?>">ADMIN</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -468,6 +485,7 @@
                 <div class="hero-caption">
                     <h1>RENTAL KOSTUM COSPLAY MURAH PEKALONGAN JATENG</h1>
                     <p>Harga Pelajar Friendly - Bisa Rental Pisahan</p>
+                    <button class="active">NOW</button>
                 </div>
             </div>
             <div class="hero-slide">
@@ -475,6 +493,7 @@
                 <div class="hero-caption">
                     <h1>KOSTUM TERBARU</h1>
                     <p>Koleksi kostum anime, game, dan karakter favoritmu</p>
+
                 </div>
             </div>
         </div>
@@ -486,57 +505,41 @@
     </section>
 
     <section class="product-section">
-    <div class="section-header">
-        <h2>DAFTAR KOSTUM</h2>
-    </div>
-    <div class="carousel-wrapper">
-        <div class="scroll-arrow left">&lt;</div>
-        <div class="carousel">
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">TOMIOKA GIYU</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">HIMMEL</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">FRIEREN</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">GOJO SATORU</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">ASTA</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <p class="card-title">YOR FORGER</p>
-            </div>
+        <div class="section-header">
+            <h2>DAFTAR KOSTUM</h2>
         </div>
-        <div class="scroll-arrow right">&gt;</div>
-    </div>
-</section>
+        <div class="carousel-wrapper">
+            <div class="scroll-arrow left">&lt;</div>
+            <div class="carousel">
+                <?php foreach ($kostum as $item): ?>
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('<?= base_url('uploads/' . $item['gambar']) ?>');"></div>
+                        <p class="card-title"><?= esc(strtoupper($item['nama'])) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="scroll-arrow right">&gt;</div>
+        </div>
+    </section>
 
-<section class="product-section">
-    <div class="section-header">
-        <h2>PROPS</h2>
-    </div>
-    <div class="carousel-wrapper">
-        <div class="scroll-arrow left">&lt;</div>
-        <div class="carousel">
-            <div class="card"><div class="card-image"></div><p class="card-title">KATANA</p></div>
-            <div class="card"><div class="card-image"></div><p class="card-title">HIMMEL SWORD</p></div>
-            <div class="card"><div class="card-image"></div><p class="card-title">RING ELEMENTAL</p></div>
-            <div class="card"><div class="card-image"></div><p class="card-title">JADE SPEAR</p></div>
-            <div class="card"><div class="card-image"></div><p class="card-title">CYBER SWORD</p></div>
+
+    <section class="product-section">
+        <div class="section-header">
+            <h2>PROPS</h2>
         </div>
-        <div class="scroll-arrow right">&gt;</div>
-    </div>
-</section>
+        <div class="carousel-wrapper">
+            <div class="scroll-arrow left">&lt;</div>
+            <div class="carousel">
+                <?php foreach ($props as $item): ?>
+                    <div class="card">
+                        <div class="card-image" style="background-image: url('<?= base_url('uploads/' . $item['gambar']) ?>');"></div>
+                        <p class="card-title"><?= esc(strtoupper($item['nama'])) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="scroll-arrow right">&gt;</div>
+        </div>
+    </section>
 
     <footer>
         <div class="social-icons">
@@ -549,13 +552,13 @@
             Kajen Pekalongan Jawa Tengah<br>
             First rental friendly
         </p>
-        <div class="footer-logo">Livy! <span>Rentcos!</span></div>
+        <div class="footer-logo">Iwi! <span>Rentoos!</span></div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             /* ================================================= */
-            /* NAVBAR TOGGLE UNTUK MOBILE               */
+            /* NAVBAR TOGGLE UNTUK MOBILE                      */
             /* ================================================= */
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav');
@@ -567,7 +570,7 @@
 
 
             /* ================================================= */
-            /* ANIMASI SAAT SCROLL (INTERSECTION OBSERVER) */
+            /* ANIMASI SAAT SCROLL (INTERSECTION OBSERVER)     */
             /* ================================================= */
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -583,7 +586,9 @@
             sectionsToAnimate.forEach((el) => observer.observe(el));
 
 
-            /* HERO SLIDER (Kode Asli) */
+            /* ================================================= */
+            /* HERO SLIDER                                     */
+            /* ================================================= */
             let currentSlide = 0;
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.dot');
@@ -599,38 +604,64 @@
             }
 
             // Auto slide
-            setInterval(() => {
+            const slideInterval = setInterval(() => {
                 let nextSlide = (currentSlide + 1) % slides.length;
                 showSlide(nextSlide);
             }, 4000);
 
             // Click dot
             dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => showSlide(i));
+                dot.addEventListener('click', () => {
+                    showSlide(i);
+                    // Reset interval agar tidak ganti slide terlalu cepat setelah diklik
+                    clearInterval(slideInterval);
+                });
             });
 
-            /* PRODUCT CAROUSEL (Kode Asli, sedikit perbaikan) */
+            /* ================================================= */
+            /* PRODUCT CAROUSEL (KODE BARU YANG LEBIH BAIK)    */
+            /* ================================================= */
             document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
                 const carousel = wrapper.querySelector('.carousel');
-                // Tombol panah kiri dan kanan sekarang berfungsi
                 const leftArrow = wrapper.querySelector('.scroll-arrow.left');
                 const rightArrow = wrapper.querySelector('.scroll-arrow.right');
-                
-                if(rightArrow) {
-                    rightArrow.addEventListener('click', () => {
-                        carousel.scrollBy({ left: 300, behavior: 'smooth' });
+
+                // Fungsi untuk update tampilan panah
+                const updateArrowsVisibility = () => {
+                    if (!carousel) return;
+                    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+                    // Tambah/hapus class 'hidden' berdasarkan posisi scroll
+                    leftArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
+                    // Gunakan toleransi 1px untuk mengatasi masalah pembulatan desimal
+                    rightArrow.classList.toggle('hidden', carousel.scrollLeft >= maxScrollLeft - 1);
+                };
+
+                // Event listener untuk tombol panah
+                rightArrow.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: carousel.clientWidth * 0.8,
+                        behavior: 'smooth'
+                    }); // Gulir 80% dari lebar area
+                });
+
+                leftArrow.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: -carousel.clientWidth * 0.8,
+                        behavior: 'smooth'
                     });
-                }
-                
-                if(leftArrow) {
-                    leftArrow.addEventListener('click', () => {
-                        carousel.scrollBy({ left: -300, behavior: 'smooth' });
-                    });
-                }
+                });
+
+                // Panggil fungsi update saat di-scroll atau saat ukuran window berubah
+                carousel.addEventListener('scroll', updateArrowsVisibility);
+                window.addEventListener('resize', updateArrowsVisibility);
+
+                // Panggil sekali saat halaman dimuat
+                updateArrowsVisibility();
             });
         });
-        
     </script>
 
 </body>
+
 </html>

@@ -7,5 +7,7 @@ class PropsModel extends Model
 {
     protected $table = 'props';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama', 'deskripsi', 'gambar', 'harga', 'status'];
+    // Perbarui allowedFields dan tambahkan useTimestamps
+    protected $allowedFields = ['nama', 'deskripsi', 'gambar', 'harga', 'status', 'created_at', 'updated_at'];
+    protected $useTimestamps = true;
 }
